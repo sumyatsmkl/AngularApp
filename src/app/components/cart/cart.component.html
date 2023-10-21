@@ -1,0 +1,62 @@
+<ng-container *ngIf="selectedItemList.length!=0">
+<div class="card-table">
+    <div class="cart-product">
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Sr.No</th>
+                    <th>Item Name</th>
+                    <th>Item Code</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of selectedItemList; let i=index">
+                    <td width="10px;">{{i+1}}</td>
+                    <td width="25%">{{item.itemName}}</td>
+                    <td width="12%">{{item.itemCode}}</td>
+                    <td width="12%">{{item.actualPrice}}</td>
+                    <td width="12%">{{item.orderQty}}</td>
+                    <td width="12%">{{item.actualPrice}}</td>
+                    <td><button style="margin-top:1px;" class="btn btn-danger me-2 mb1" (click)="removeItem(item)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+                          </svg>
+                        
+                    </button></td>
+                </tr>
+                <tr>
+                    <td colspan="2"></td>
+                    <td width="12%"><button class="btn btn-danger" (click)="emptyCart()">Empty Cart</button></td>
+                    <td width="12%"><button class="btn btn-primary" routerLink="/dashboard">Shop more</button></td>
+                    <td width="12%"><button class="btn btn-success" (click)="submitOrder()">Submit Order</button></td>
+                    <td><button class="btn btn-dark"><strong>{{grandTotal}}</strong></button></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+</div>
+</ng-container>
+
+<ng-container *ngIf="selectedItemList.length==0">
+    <div class="container">
+        <div class="card">
+            <h5 class="card-title">My Cart</h5>
+        </div>
+    
+        <div class="center">
+            <img src="https://rukminim1.flixcart.com/flap/128/128/image/f15c02bfeb02d15d.png?q=100" alt="">
+            <h4>Your cart is empty!</h4>
+            <h6>Add item to your cart now.</h6>
+            <button class="btn btn-primary" routerLink="/dashboard">Shop Now</button>
+        </div>
+    </div>
+    
+</ng-container>
+
